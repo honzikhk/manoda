@@ -12,4 +12,4 @@ class Record(models.Model):
         return f"Date: {self.date} - value: {self.value}"
 
     class Meta:
-        ordering = ["date"]
+        ordering = ["-date"]
