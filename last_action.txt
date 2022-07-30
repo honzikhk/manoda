@@ -1,0 +1,6 @@
+add base app to settings.py/installed_apps
+make homepage.html in base app, that will be used as a base page for each app
+include urls (base, energy meter)
+include function to energy_meter_base.html -woooooow
+
+todo: create view for template energy_meter_record_create.html (createview)

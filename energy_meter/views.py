@@ -6,5 +6,5 @@ from energy_meter.models import Record
 
 class RecordListView(ListView):
     model = Record
-    template_name = "energy_meter/base.html"
+    template_name = "energy_meter/energy_meter_base.html"
 

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     "energy_meter",
+    "base",
 ]
 
 MIDDLEWARE = [
