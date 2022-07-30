@@ -1,3 +1,10 @@
 from django.shortcuts import render
+from django.views.generic import ListView
 
-# Create your views here.
+from energy_meter.models import Record
+
+
+class RecordListView(ListView):
+    model = Record
+    template_name = "energy_meter/base.html"
+
