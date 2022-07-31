@@ -1,4 +1,11 @@
 
 {% block record_create %}
-<h1>heeey</h1>
+  <div>
+    <form action="{% url "energy_meter_base" %}" method="POST">
+      {% csrf_token %}
+        {{ form.as_p }}
+      <input type="submit" value="Submit">
+    </form>
+    <br><br>
+  </div>
 {% endblock record_create %}
