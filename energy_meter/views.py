@@ -12,5 +12,8 @@ class RecordListView(ListView):
 
 class RecordCreateView(CreateView):
     model = Record
-    template_name = "energy_meter/energy_meter_record_create.html"
+    template_name = "energy_meter/energy_meter_base.html"
     form_class = RecordForm
+
+    def get_queryset(self):
+        records = Record.objects.all()

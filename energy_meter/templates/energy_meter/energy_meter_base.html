@@ -1,11 +1,18 @@
 {% extends "base/homepage.html" %}
-{% include "energy_meter/energy_meter_record_create.html" %}
+
+
 {% block energy_meter %}
 <h2>New record:</h2>
 
-    {% block record_create %}
-    {% include "energy_meter/energy_meter_record_create.html" %}        {# {% include 'posts.html' with posts=postdata %} #}
-    {% endblock record_create %}
+<div>
+    <form action="{% url "energy_meter_base" %}" method="POST">
+        {% csrf_token %}
+        <p>here should be the form</p>
+        {{ form.as_p }}
+      <input type="submit" value="Submit">
+    </form>
+    <br><br>
+  </div>
 
 <h2>Records:</h2>
 {% for value in object_list %}
