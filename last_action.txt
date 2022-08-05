@@ -5,4 +5,4 @@ include function to energy_meter_base.html -woooooow
 
 create view and form for template energy_meter_record_create.html (createview)
 
-todo: fix the recordform
+put the form of new record and list of record to one view - createview

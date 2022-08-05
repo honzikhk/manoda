@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.shortcuts import resolve_url
 
 
 class Record(models.Model):
@@ -13,3 +14,6 @@ class Record(models.Model):
 
     class Meta:
         ordering = ["-date"]
+
+    def get_absolute_url(self):
+        return resolve_url("energy_meter_base")

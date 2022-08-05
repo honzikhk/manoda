@@ -15,8 +15,7 @@
   </div>
 
 <h2>Records:</h2>
-{% for value in object_list %}
-    <p>{{ value }}</p>
-
+{% for value in records %}
+    <p>{{ value }} | <a href="{% url "delete_record" value.id %}">Delete</a></p>
 {% endfor %}
 {% endblock energy_meter %}

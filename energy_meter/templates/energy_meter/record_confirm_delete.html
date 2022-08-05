@@ -1,0 +1,13 @@
+{% extends "base/homepage.html" %}
+
+{% block energy_meter %}
+
+    <form method="post">
+        {% csrf_token %}
+        <p>
+          Are you sure you want to delete record from "{{ record.date }}"?
+        </p>
+        <input type="submit" value="Delete">
+      </form>
+
+{% endblock %}
