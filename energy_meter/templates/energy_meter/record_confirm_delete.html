@@ -5,7 +5,7 @@
     <form method="post">
         {% csrf_token %}
         <p>
-          Are you sure you want to delete record from "{{ record.date }}"?
+          Are you sure you want to delete record from date "{{ record.date }}, value: {{ record.value }}"?
         </p>
         <input type="submit" value="Delete">
       </form>
