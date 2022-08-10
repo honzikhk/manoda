@@ -1,0 +1,10 @@
+{% extends "base/homepage.html" %}<!DOCTYPE html>
+
+{% block data %}
+    <p>data - base</p>
+    <form action="{% url "data_base" %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+      <input type="submit" value="Upload">
+    </form>
+{% endblock %}

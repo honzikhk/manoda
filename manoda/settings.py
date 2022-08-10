@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     "energy_meter",
     "base",
+    "data",
 ]
 
 MIDDLEWARE = [

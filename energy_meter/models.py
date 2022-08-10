@@ -3,7 +3,7 @@ from django.db import models
 from django.shortcuts import resolve_url
 
 
-class Record(models.Model):
+class Record(models.Model):     # maybe better name will be EnergyMeterRecord
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField()
     value = models.IntegerField()
@@ -17,3 +17,6 @@ class Record(models.Model):
 
     def get_absolute_url(self):
         return resolve_url("energy_meter_base")
+
+
+

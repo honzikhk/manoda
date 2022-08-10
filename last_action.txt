@@ -9,3 +9,5 @@ put the form of new record and list of record to one view - createview
 
 create function for counting consumption, days of measuring etc.
 
+app data, form, link on homepage
+

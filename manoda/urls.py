@@ -5,5 +5,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("base.urls")),
     path("", include("energy_meter.urls")),
+    path("", include("data.urls")),
 
 ]
