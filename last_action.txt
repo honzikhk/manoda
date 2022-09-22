@@ -11,3 +11,6 @@ create function for counting consumption, days of measuring etc.
 
 app data, form, link on homepage
 
+prepare data for chart
+
+!!! update requirements.txt, continue with chart

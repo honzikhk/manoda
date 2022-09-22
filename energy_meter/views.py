@@ -8,12 +8,15 @@ from energy_meter.models import Record
 def count_avg_consumption():
     """ from all records counts amount of consumed electricity, days of measuring and average consumption per day """
     data = {}
-    max_value = max(Record.objects.values_list("value", flat=True))
-    min_value = min(Record.objects.values_list("value", flat=True))
-    consumed = max_value - min_value
-    first_date = min(Record.objects.values_list("date", flat=True))
-    last_date = max(Record.objects.values_list("date", flat=True))
+    values_lst = Record.objects.values_list("value", flat=True)     # makes list of values
+    max_value = max(values_lst)
+    min_value = min(values_lst)
+    dates_lst = Record.objects.values_list("date", flat=True)       # makes list of dates
+    first_date = min(dates_lst)
+    last_date = max(dates_lst)
     count_of_days_datetime = last_date - first_date
+
+    consumed = max_value - min_value
     count_of_days_int = count_of_days_datetime.days
     avg_consumption = consumed / count_of_days_int
     price_per_month = round((8.5 * avg_consumption * 30))
@@ -22,7 +25,37 @@ def count_avg_consumption():
     data["count_of_days_int"] = count_of_days_int
     data["avg_consumption"] = round(avg_consumption, 2)
     data["price_per_month"] = price_per_month
-    return data
+
+    return data     # returns dictionary with data, that i need
+
+
+def chart_consumption():
+    avg_consumption_in_period_per_day = []
+    periods = []
+    days_between_measuring = []
+    values_lst = Record.objects.values_list("value", flat=True)[::-1]     # makes list of values
+    dates_lst = Record.objects.values_list("date", flat=True)[::-1]  # makes list of dates from the oldest record
+
+    for i in range(len(dates_lst)):
+        if i + 1 == len(dates_lst):
+            break
+        days_between_measuring.append(abs((dates_lst[i] - dates_lst[i + 1]).days))      # makes list of count days between measurements
+
+    for i in range(len(dates_lst)):
+        if i + 1 == len(dates_lst):
+            break
+        str_of_dates = dates_lst[i].strftime("%d.%m.%y")        # makes string from datetime (day.month.year)
+        str_of_dates_next = dates_lst[i + 1].strftime("%d.%m.%y")       # makes string for next day
+        periods.append(f"{str_of_dates} - {str_of_dates_next}")     # add string for axe X
+
+    for i in range(len(values_lst)):
+        if i + 1 == len(values_lst):
+            break
+        _ = values_lst[i + 1] - values_lst[i]       # diff between two measurements
+        avg_consumption_in_period_per_day.append(round((_ / days_between_measuring[i]), 2))     # values for axe Y
+
+    return f"periods: {periods}, avg_consumption_in_period_per_day: {avg_consumption_in_period_per_day}," \
+           f" days_between_measuring: {days_between_measuring}, values_lst: {values_lst}"
 
 
 class RecordCreateView(CreateView):
@@ -39,6 +72,8 @@ class RecordCreateView(CreateView):
             "number_of_days": count_avg_consumption()["count_of_days_int"],
             "avg_consumption": count_avg_consumption()["avg_consumption"],
             "price_per_month": count_avg_consumption()["price_per_month"],
+            
+            "chart_consumption": chart_consumption(),
         })
         return context
 
