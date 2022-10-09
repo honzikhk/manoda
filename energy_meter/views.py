@@ -19,7 +19,7 @@ def count_avg_consumption():
     consumed = max_value - min_value
     count_of_days_int = count_of_days_datetime.days
     avg_consumption = consumed / count_of_days_int
-    price_per_month = round((8.5 * avg_consumption * 30))
+    price_per_month = round((8.5 * avg_consumption * 30))       # 8.5 is price pe kwh
 
     data["consumed"] = consumed
     data["count_of_days_int"] = count_of_days_int
@@ -30,6 +30,7 @@ def count_avg_consumption():
 
 
 def chart_consumption():
+    data = {}
     avg_consumption_in_period_per_day = []
     periods = []
     days_between_measuring = []
@@ -54,8 +55,14 @@ def chart_consumption():
         _ = values_lst[i + 1] - values_lst[i]       # diff between two measurements
         avg_consumption_in_period_per_day.append(round((_ / days_between_measuring[i]), 2))     # values for axe Y
 
-    return f"periods: {periods}, avg_consumption_in_period_per_day: {avg_consumption_in_period_per_day}," \
-           f" days_between_measuring: {days_between_measuring}, values_lst: {values_lst}"
+    data["periods"] = periods
+    data["avg_consumption_in_period_per_day"] = avg_consumption_in_period_per_day
+    data["days_between_measuring"] = days_between_measuring
+    data["values_lst"] = values_lst
+
+    return data
+    # return f"periods: {periods}, avg_consumption_in_period_per_day: {avg_consumption_in_period_per_day}," \
+    #        f" days_between_measuring: {days_between_measuring}, values_lst: {values_lst}"
 
 
 class RecordCreateView(CreateView):

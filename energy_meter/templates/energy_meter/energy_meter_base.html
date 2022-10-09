@@ -19,8 +19,10 @@
     <p>So, approximately {{ price_per_month }} Kč per month</p><br>
 
 <p>here should be</p>
-    <p>list of periods: {{ chart_consumption }}</p>
-
+    <p>list of periods: {{ chart_consumption.periods }}</p>
+    <p>avg consumption in period per day: {{ chart_consumption.avg_consumption_in_period_per_day }}</p>
+    <p>days_between_measuring: {{ chart_consumption.days_between_measuring }}</p>
+    <p>values_lst: {{ chart_consumption.values_lst }}</p>
 
 <h2>Records:</h2>
 {% for value in records %}
