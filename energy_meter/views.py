@@ -19,7 +19,7 @@ def count_avg_consumption():
     consumed = max_value - min_value
     count_of_days_int = count_of_days_datetime.days
     avg_consumption = consumed / count_of_days_int
-    price_per_month = round((8.5 * avg_consumption * 30))       # 8.5 is price pe kwh
+    price_per_month = round((13.9 * avg_consumption * 30))       # 13.9 is price pe kwh
 
     data["consumed"] = consumed
     data["count_of_days_int"] = count_of_days_int
