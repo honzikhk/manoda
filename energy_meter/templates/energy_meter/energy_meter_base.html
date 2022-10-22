@@ -22,10 +22,11 @@
     <p>list of periods: {{ chart_consumption.periods }}</p>
     <p>avg consumption in period per day: {{ chart_consumption.avg_consumption_in_period_per_day }}</p>
     <p>days_between_measuring: {{ chart_consumption.days_between_measuring }}</p>
-    <p>values_lst: {{ chart_consumption.values_lst }}</p>
+    <p>values_lst: {{ chart_consumption.values_lst }} - number of values: {{ chart_consumption.number_of_values }}</p>
+    <p>kw in period: {{ chart_consumption.kw_in_period }}</p>
 
 <h2>Records:</h2>
 {% for value in records %}
-    <p>{{ value }} | <a href="{% url "delete_record" value.id %}">Delete</a></p>
+<p>{{ value }} | <a href="{% url "delete_record" value.id %}">Delete</a></p>
 {% endfor %}
 {% endblock energy_meter %}
