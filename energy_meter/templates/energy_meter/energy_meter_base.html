@@ -16,9 +16,13 @@
     <p>Consumption from first record: {{ consumed }} kW</p>
     <p>Number of days since the first record: {{ number_of_days }}</p>
     <p>Average consumption is {{ avg_consumption }} kW per day</p>
-    <p>So, approximately {{ price_per_month }} Kč per month</p><br>
+    <p>So, approximately {{ price_per_month }} Kč per month. (The price is set up wrong - higher for whole project)</p><br>
 
-<p>here should be</p>
+
+    <img src="data:image/png;base64, {{ chart_consumption.chart|safe }}">
+
+
+<p>data for chart</p>
     <p>list of periods: {{ chart_consumption.periods }}</p>
     <p>avg consumption in period per day: {{ chart_consumption.avg_consumption_in_period_per_day }}</p>
     <p>days_between_measuring: {{ chart_consumption.days_between_measuring }}</p>

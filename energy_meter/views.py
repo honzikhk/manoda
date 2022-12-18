@@ -4,6 +4,8 @@ from django.views.generic import CreateView, DeleteView
 from energy_meter.forms import RecordForm
 from energy_meter.models import Record
 
+from .utils import get_plot
+
 
 def count_avg_consumption():
     """ from all records counts amount of consumed electricity, days of measuring and average consumption per day """
@@ -58,7 +60,8 @@ def chart_consumption():
 
     for i in range(len(values_lst) - 1):
         kw_in_period.append(values_lst[i + 1] - values_lst[i])
-    
+
+    data["chart"] = get_plot(periods, kw_in_period)
 
     data["periods"] = periods
     data["avg_consumption_in_period_per_day"] = avg_consumption_in_period_per_day
@@ -86,8 +89,8 @@ class RecordCreateView(CreateView):
             "number_of_days": count_avg_consumption()["count_of_days_int"],
             "avg_consumption": count_avg_consumption()["avg_consumption"],
             "price_per_month": count_avg_consumption()["price_per_month"],
-            
-            
+
+
             "chart_consumption": chart_consumption(),
         })
         return context
