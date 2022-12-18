@@ -14,3 +14,5 @@ app data, form, link on homepage
 prepare data for chart
 
 !!! update requirements.txt, continue with chart
+ - pip freeze > requirements.txt
+

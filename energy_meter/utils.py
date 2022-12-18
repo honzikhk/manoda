@@ -15,7 +15,7 @@ def get_graph():
 
 def get_plot(x, y):
     plt.switch_backend("AGG")
-    plt.figure(figsize=(10, 5))
+    plt.figure(figsize=(10, 5))     # size of chart
     plt.title("kws in periods")
     plt.bar(x, y)
     plt.xticks(rotation=90)
