@@ -16,3 +16,5 @@ prepare data for chart
 !!! update requirements.txt, continue with chart
  - pip freeze > requirements.txt
 
+chart in energy_meter_base.html :) !!!
+
