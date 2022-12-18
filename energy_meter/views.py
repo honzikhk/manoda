@@ -89,7 +89,9 @@ class RecordCreateView(CreateView):
             "number_of_days": count_avg_consumption()["count_of_days_int"],
             "avg_consumption": count_avg_consumption()["avg_consumption"],
             "price_per_month": count_avg_consumption()["price_per_month"],
+            "periods": chart_consumption()["periods"],
 
+            "all_in_one": zip(Record.objects.all(), chart_consumption()["periods"], chart_consumption()["kw_in_period"]),       # fix this
 
             "chart_consumption": chart_consumption(),
         })

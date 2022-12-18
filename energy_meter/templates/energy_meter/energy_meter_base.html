@@ -29,8 +29,20 @@
     <p>values_lst: {{ chart_consumption.values_lst }} - number of values: {{ chart_consumption.number_of_values }}</p>
     <p>kw in period: {{ chart_consumption.kw_in_period }}</p>
 
-<h2>Records:</h2>
-{% for value in records %}
-<p>{{ value }} | <a href="{% url "delete_record" value.id %}">Delete</a></p>
-{% endfor %}
+<span>
+  <h2>Records:</h2>
+    {% for value in records %}
+      <p>{{ value }} | <a href="{% url "delete_record" value.id %}">Delete</a></p>
+    {% endfor %}
+</span>
+<span>
+
+  {% for value in all_in_one %}
+    <p>{{ value }}</p>
+  {% endfor %}
+
+</span>
 {% endblock energy_meter %}
+
+
+

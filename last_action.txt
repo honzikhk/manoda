@@ -18,3 +18,4 @@ prepare data for chart
 
 chart in energy_meter_base.html :) !!!
 
+tried display values one by one in energy_meter_base. FIX
